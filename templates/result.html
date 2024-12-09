@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>don't panic</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3e5f5; /* Lilla chiaro */
+            color: #ffffff;
+        }
+
+        header {
+            background-color: #8e44ad; /* Viola scuro */
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #ffffff; /* Bianco */
+        }
+        
+footer {
+    background-color: #8e44ad; /* Viola scuro */
+    padding: 50px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+        }
+
+        .footer-links,
+        .footer-app,
+        .footer-social {
+            margin: 10px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        
+
+        @media (max-width: 768px) {
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links,
+            .footer-app,
+            .footer-social {
+                margin: 10px 0;
+            }
+        }
+    
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .search-bar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Distanza tra le searchbar */
+    margin-top: 50px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input[type="text"] {
+    padding: 10px;
+    border: 2px solid #8e44ad;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1em;
+    
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    background-color: #8e44ad;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #6c3483; /* Tonalità più scura di viola */
+}
+
+.scrollable-table-container {
+            width: 80%; /* Larghezza del riquadro */
+            /* Altezza del riquadro */
+            margin: 20px auto; /* Centrare il riquadro */
+            border: 2px solid #8e44ad; /* Bordo viola */
+            border-radius: 8px;
+            overflow: auto; /* Abilita la scrollbar */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgb(87, 12, 94);
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #8e44ad; /* Bordo delle celle */
+        }
+
+        th {
+            background-color: #8e44ad;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #623a67; /* Riga alternata */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>DON'T PANIC</h1>
+    </header>
+    <main>
+</head>
+<body>
+    <div class="scrollable-table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Mail</th>
+                    <th>Password</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Hai cercato: <strong>{{ email }}</strong></td>
+                    <td>{{ Password }}</td>
+                    
+                    
+                </tr>
+            </tbody>
+        </table>
+    
+    </div>
+    <div style="background-color: #9148AF; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); text-align: center;">
+        <p style="color: #ffffff; font-size: 1.2em; margin-bottom: 20px;">{{ message }}</p>
+        <a href="/" style="color: #ffffff; text-decoration: none; background-color: #6c3483; padding: 10px 20px; border-radius: 5px; font-size: 1em; font-weight: bold;">
+            Torna indietro
+        </a>
+    </div>
+    
+    </main>
+    </tbody>
+
+    <footer>
+        <div class="footer-links">
+        <a href="https://www.youtube.com/watch?v=KLn43uJl6o4">Privacy</a>
+        <a href="https://www.youtube.com/watch?v=KLn43uJl6o4">Informazioni legali</a>
+        <a href="https://www.youtube.com/watch?v=KLn43uJl6o4">Informativa sulla privacy</a>
+        <a href="https://www.youtube.com/watch?v=KLn43uJl6o4">Chi siamo</a>
+        <a href="https://www.youtube.com/watch?v=KLn43uJl6o4">Perchè siamo il gruppo Migliore</a>
+    </div>
+   </footer>
+
+</div>
+</body>
+</html>
