@@ -31,10 +31,3 @@ The data from the MariaDB database must be loaded into the app.py file. This ena
 Verification:
 Once the data is loaded, the application will compare the entered credentials with the ones in the database. Results are then displayed within the HTML interface.
 
-Contributors:
-Tozzi
-Tresoldi
-Mulas
-Tiretta
-Bottaro
-
