@@ -1,5 +1,5 @@
 # CYBER-INTELLIGENCE
-Project Description
+# Project Description
 CYBER-INTELLIGENCE is an application designed to verify if credentials, such as emails and passwords, have been compromised in data breaches. By leveraging a database containing information about known breaches, the system enables users to securely and efficiently check the status of their credentials.
 
 Key Features
