@@ -1,13 +1,8 @@
 from flask import Flask, render_template, request
 import sqlite3
+import mysql.connector
 
 app = Flask(__name__, template_folder='templates')  # Ensure template folder is set correctly
-
-DATABASES = [
-    'databases/database1.db',
-    'databases/database2.db',
-    'databases/database3.db'
-]
 
 @app.route('/')
 def home():
@@ -15,22 +10,34 @@ def home():
 
 @app.route('/check_email', methods=['POST'])
 def check_email():
-
-    email = request.form.get('email')
-    found_in = []  # List to track which databases contain the email
-
-    # Iterate through all databases and check for the email
-    for db_path in DATABASES:
-        try:
-            conn = sqlite3.connect(db_path)
-            cursor = conn.cursor()
-            cursor.execute("SELECT * FROM emails WHERE email = ?", (email,))
-            if cursor.fetchone():
-                found_in.append(db_path.split('/')[-1])  # Extract only the database file name
-            conn.close()
-        except Exception as e:
-            print(f"Error checking database {db_path}: {e}")
     
+    email = request.form.get('email')
+    found_in = []
+    db_name = ["database1", "database2", "database3"]
+    cont = 0
+    
+    try:
+        # Connessione al database MariaDB
+        conn = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="Aaaa"
+        )
+        cursor = conn.cursor()
+
+        # Usa il database specificato
+        cursor.execute(f"USE {db_name[cont]};")
+        cursor.execute("SELECT * FROM email WHERE email = %s", (email,))
+        if cursor.fetchone():
+                found_in.append(db_name[cont])
+        cursor.close()
+        conn.close()
+    except mysql.connector.Error as err:
+        print(f"Errore durante il controllo del database {db_name[cont]}: {err}")
+    cont = cont + 1
+
+
+
     if found_in:
         message = f"L'indirizzo email è stato trovato nei seguenti database: {', '.join(found_in)}."
     else:
