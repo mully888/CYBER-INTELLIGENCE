@@ -16,9 +16,8 @@ git clone https://github.com/mully888/CYBER-INTELLIGENCE
 Install the required dependencies.
 Configure the database with access credentials and load breach data.
 Start the application:
-bash
 python app.py  
-Contributors
+Contributors:
 Tozzi
 Tresoldi
 Mulas
