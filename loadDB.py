@@ -79,10 +79,10 @@ if __name__ == "__main__":
     db_password = getpass.getpass("Inserisci la password per il database MariaDB: ")
 
     # File di input
-    file1 = r"C:\breach1.txt"
-    file2 = r"C:\breach2.txt"
-    file3 = r"C:\breach3.txt"
-    tld_file = r"C:\wordlistTLD.txt"
+    file1 = r"C:/CYBER-INTELLIGENCE-main/databases/File1.txt"
+    file2 = r"C:/CYBER-INTELLIGENCE-main/databases/File2.txt"
+    file3 = r"C:/CYBER-INTELLIGENCE-main/databases/File3.txt"
+    tld_file = r"C:/CYBER-INTELLIGENCE-main/wordlistTLD.txt"
 
     # Verifica che i file esistano
     for file_path in [file1, file2, file3, tld_file]:
