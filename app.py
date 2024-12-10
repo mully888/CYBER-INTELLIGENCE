@@ -13,30 +13,29 @@ def check_email():
     
     email = request.form.get('email')
     found_in = []
-    db_name = ["database1", "database2", "database3"]
-    cont = 0
+    db_names = ["database1", "database2", "database3"]
     
-    try:
-        # Connessione al database MariaDB
-        conn = mysql.connector.connect(
-            host="localhost",
-            user="check_user",
-        )
-        cursor = conn.cursor()
+    for database in db_names:
+        try:
+            # Connessione al database MariaDB
+            conn = mysql.connector.connect(
+                host="localhost",
+                user="check_user",
+            )
+            cursor = conn.cursor()
 
-        # Usa il database specificato
-        cursor.execute(f"SYSTEM MYSQL -u check_user")
-        cursor.execute(f"USE {db_name[cont]};")
-        cursor.execute("SELECT * FROM email WHERE email = %s", (email,))
-        if cursor.fetchone():
-                found_in.append(db_name[cont])
-        cursor.close()
-        conn.close()
-    except mysql.connector.Error as err:
-        print(f"Errore durante il controllo del database {db_name[cont]}: {err}")
-    cont = cont + 1
-
-
+            # Usa il database specificato
+            cursor.execute(f"USE {database};")
+            cursor.execute(f"SELECT * FROM email WHERE email = '{email}';")
+            result = cursor.fetchone()
+            if result:
+                found_in.append(database)
+            cursor.close()
+            conn.close()
+        except mysql.connector.Error as err:
+            print(f"Errore durante il controllo del database for {database}: {err}")
+        except:
+            print("Errore")
 
     if found_in:
         message = f"L'indirizzo email è stato trovato nei seguenti database: {', '.join(found_in)}."
