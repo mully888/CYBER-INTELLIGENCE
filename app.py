@@ -1,11 +1,3 @@
-#Ho bisogno che mi crei un programma in Python Il programma dovrà collegarsi ad un sito HTML e dovrà avere accesso a 3 database SQL.
-#All'interno del sito HTML verrà inserito un indirizzo email. Il programma dovrà prendere quell'indirizzo e salvarselo come fosse l'input dell'utente.
-#Dovrà poi controllare se quell'indirizzo email è presente in uno dei 3 database a cui ha accesso.
-#Nel caso dovesse trovare quell'indirizzo email all'interno del database, il programma dovrà mostrare sul sito HTML se è stato trovato l'indirizzo email e nel caso in quale dei database è stato trovato
-#I database sono salvati in una sottocartella chiamata "databases".
-#Il sito HTML è salvato in una sottocartella chiamata "templates".
-#I database devono essere nosql
-
 from flask import Flask, render_template, request
 import sqlite3
 
