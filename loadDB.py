@@ -3,7 +3,7 @@ import mysql.connector
 import getpass
 import os
 
-def extract_emails(file1, file2, tld_file):
+def extract_emails(file1, file2, file3, tld_file):
     # Carica i TLD validi dal file
     with open(tld_file, 'r') as tld_f:
         tlds = set(line.strip() for line in tld_f)
@@ -38,6 +38,7 @@ def extract_emails(file1, file2, tld_file):
     # Processa entrambi i file
     process_file(file1)
     process_file(file2)
+    process_file(file3)
 
     return emails
 
@@ -90,21 +91,23 @@ if __name__ == "__main__":
     db_password = getpass.getpass("Inserisci la password per il database MariaDB: ")
 
     # File di input
-    file1 = r"C:\Users\AlessiaTresoldi\OneDrive - ITS Angelo Rizzoli\Desktop\esercitazioni\CyberThreat\Spicci1.txt"
-    file2 = r"C:\Users\AlessiaTresoldi\OneDrive - ITS Angelo Rizzoli\Desktop\esercitazioni\CyberThreat\4.txt"
-    tld_file = r"C:\Users\AlessiaTresoldi\OneDrive - ITS Angelo Rizzoli\Desktop\esercitazioni\CyberThreat\tlds_formattati.txt"
+    file1 = r"E:/Test/test_db/File1.txt"
+    file2 = r"E:/Test/test_db/File2.txt"
+    file3 = r"E:/Test/test_db/File3.txt"
+    tld_file = r"E:/tlds_formattati.txt"
 
     # Verifica che i file esistano
-    for file_path in [file1, file2, tld_file]:
+    for file_path in [file1, file2, file3, tld_file]:
         if not os.path.exists(file_path):
             print(f"Errore: Il file {file_path} non esiste.")
             exit(1)
 
     # Estrazione email
-    emails = extract_emails(file1, file2, tld_file)
+    emails = extract_emails(file1, file2, file3, tld_file)
 
     # Inserimento nei database
     insert_into_db(emails, "database1", db_password)
     insert_into_db(emails, "database2", db_password)
+    insert_into_db(emails, "database3", db_password)
 
     print("Operazione completata.")
