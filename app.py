@@ -20,12 +20,12 @@ def check_email():
         # Connessione al database MariaDB
         conn = mysql.connector.connect(
             host="localhost",
-            user="root",
-            password="Aaaa"
+            user="check_user",
         )
         cursor = conn.cursor()
 
         # Usa il database specificato
+        cursor.execute(f"SYSTEM MYSQL -u check_user")
         cursor.execute(f"USE {db_name[cont]};")
         cursor.execute("SELECT * FROM email WHERE email = %s", (email,))
         if cursor.fetchone():
