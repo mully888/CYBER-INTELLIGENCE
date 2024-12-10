@@ -20,27 +20,16 @@ Configure the database with access credentials and load breach data.
 Start the application:
 python app.py  
 # How it works
-How It Works
-Database Integration
-The application connects to a database containing details of known data breaches. This database is updated regularly to ensure comprehensive coverage of compromised credentials.
+Our code is built with MariaDB, a popular relational database. To use the application, you need to have a MariaDB database similar to the "collection" database, containing email and password data that may have been compromised in breaches.
 
-Input and Verification
+Database Setup:
+Ensure your database has tables with emails and passwords stored securely.
 
-Users input their email and password into the application.
-The system uses secure hashing techniques to compare the provided credentials against the database without exposing sensitive information.
-Results Display
+Loading Data into app.py:
+The data from the MariaDB database must be loaded into the app.py file. This enables the application to access and query the stored credentials.
 
-If the email or password is found in the breach records, the application notifies the user of the compromise.
-Recommendations are provided, such as updating passwords or activating two-factor authentication.
-Backend Logic
-
-Email Checks: Validate whether the email appears in the compromised dataset.
-Password Hash Matching: Employ hashing algorithms to prevent plaintext password exposure during comparisons.
-Front-End and User Experience
-The front-end is designed with simplicity in mind, providing clear feedback on the security of the checked credentials.
-
-Wordlist Tool
-A supplementary wordlist tool assists in identifying common domains and potential threats, enhancing the robustness of breach checks.
+Verification:
+Once the data is loaded, the application will compare the entered credentials with the ones in the database. Results are then displayed within the HTML interface.
 
 Contributors:
 Tozzi
