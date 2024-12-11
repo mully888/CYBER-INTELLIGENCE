@@ -1,0 +1,9 @@
+CREATE TABLE emails (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email TEXT UNIQUE NOT NULL
+);
+
+INSERT INTO emails (email) VALUES
+('example7@test.com'),
+('example8@test.com'),
+('example1@test.com');
