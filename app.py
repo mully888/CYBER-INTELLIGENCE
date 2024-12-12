@@ -1,21 +1,8 @@
-#Ho bisogno che mi crei un programma in Python Il programma dovrà collegarsi ad un sito HTML e dovrà avere accesso a 3 database SQL.
-#All'interno del sito HTML verrà inserito un indirizzo email. Il programma dovrà prendere quell'indirizzo e salvarselo come fosse l'input dell'utente.
-#Dovrà poi controllare se quell'indirizzo email è presente in uno dei 3 database a cui ha accesso.
-#Nel caso dovesse trovare quell'indirizzo email all'interno del database, il programma dovrà mostrare sul sito HTML se è stato trovato l'indirizzo email e nel caso in quale dei database è stato trovato
-#I database sono salvati in una sottocartella chiamata "databases".
-#Il sito HTML è salvato in una sottocartella chiamata "templates".
-#I database devono essere nosql
-
 from flask import Flask, render_template, request
 import sqlite3
+import mysql.connector
 
 app = Flask(__name__, template_folder='templates')  # Ensure template folder is set correctly
-
-DATABASES = [
-    'databases/database1.db',
-    'databases/database2.db',
-    'databases/database3.db'
-]
 
 @app.route('/')
 def home():
@@ -23,22 +10,33 @@ def home():
 
 @app.route('/check_email', methods=['POST'])
 def check_email():
-
-    email = request.form.get('email')
-    found_in = []  # List to track which databases contain the email
-
-    # Iterate through all databases and check for the email
-    for db_path in DATABASES:
-        try:
-            conn = sqlite3.connect(db_path)
-            cursor = conn.cursor()
-            cursor.execute("SELECT * FROM emails WHERE email = ?", (email,))
-            if cursor.fetchone():
-                found_in.append(db_path.split('/')[-1])  # Extract only the database file name
-            conn.close()
-        except Exception as e:
-            print(f"Error checking database {db_path}: {e}")
     
+    email = request.form.get('email')
+    found_in = []
+    db_names = ["database1", "database2", "database3"]
+    
+    for database in db_names:
+        try:
+            # Connessione al database MariaDB
+            conn = mysql.connector.connect(
+                host="localhost",
+                user="check_user",
+            )
+            cursor = conn.cursor()
+
+            # Usa il database specificato
+            cursor.execute(f"USE {database};")
+            cursor.execute(f"SELECT * FROM email WHERE email = '{email}';")
+            result = cursor.fetchone()
+            if result:
+                found_in.append(database)
+            cursor.close()
+            conn.close()
+        except mysql.connector.Error as err:
+            print(f"Errore durante il controllo del database for {database}: {err}")
+        except:
+            print("Errore")
+
     if found_in:
         message = f"L'indirizzo email è stato trovato nei seguenti database: {', '.join(found_in)}."
     else:
