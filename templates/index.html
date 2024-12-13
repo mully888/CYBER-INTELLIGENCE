@@ -6,8 +6,39 @@
     <title>don't panic</title>
    
     <style>
+        .description, .inbox {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.5s ease;
+        }
+
+        .description {
+            font-size: 24px;
+            color: #b2adad;
+            opacity: 1; /* Mostrata inizialmente */
+        }
+
+        .description.hidden {
+            opacity: 0; /* Nasconde la descrizione */
+            pointer-events: none;
+        }
+
+        .inbox {
+            display: block;
+            opacity: 0; /* Nascosta inizialmente */
+            pointer-events: none;
+        }
+
+        .inbox.visible {
+            opacity: 1; /* Mostra la inbox */
+            pointer-events: all;
+        }
         body {
-            
+                
+
+            height: 200vh;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -213,21 +244,50 @@ footer {
     <header>
         <h1>DON'T PANIC</h1>
     </header>
-    <div class="search-bar-container">
-        <form id="emailForm" method="post" action="/check_email">
-            <label for="email">Inserisci il tuo indirizzo email:</label>
-            <input type="email" id="email" name="email" required>
-            <button type="submit">Invia</button>
-        </form>
-    </div>
+
+
+    <p style="font-size: 24px;
+    color: #ded8d8;
+    opacity: 1; margin: 20px;">Benvenuto, su questa piattaforma hai la possibilità di verificare se la tua mail è presente sul dark web; scrolla per procedere con la verifica.</p>
+
+        <div class="search-bar-container">
+            <form id="emailForm" method="post" action="/check_email">
+                <label for="email">Inserisci il tuo indirizzo email:</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit">Invia</button>
+            </form>
+        </div>
+
+
+
+    
     <footer>
         <div class="footer-links">
             <a href="https://www.youtube.com/watch?v=KLn43uJl6o4">Privacy</a>
             <a href="https://www.youtube.com/watch?v=KLn43uJl6o4">Informazioni legali</a>
-            <a href="https://www.youtube.com/watch?v=KLn43uJl6o4">Informativa sulla privacy</a>
+            <a style="color: rgb(28, 28, 112);" href="https://www.youtube.com/watch?v=KLn43uJl6o4">Privacy in blu</a>
             <a href="https://www.youtube.com/watch?v=KLn43uJl6o4">Chi siamo</a>
             <a href="https://www.youtube.com/watch?v=KLn43uJl6o4">Perchè siamo il gruppo Migliore</a>
         </div>
     </footer>
+    <script>
+        // Elementi HTML
+        const description = document.getElementById('description');
+        const inbox = document.getElementById('inbox');
+
+        // Aggiungi evento di scroll
+        window.addEventListener('scroll', () => {
+            // Controlla la posizione dello scroll
+            const scrollY = window.scrollY;
+
+            if (scrollY > 50) { // Se scendi di almeno 50px
+                description.classList.add('hidden');
+                inbox.classList.add('visible');
+            } else { // Se torni verso l'alto
+                description.classList.remove('hidden');
+                inbox.classList.remove('visible');
+            }
+        });
+    </script>
 </body>
 </html>
