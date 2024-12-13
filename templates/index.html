@@ -11,12 +11,22 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            transition: opacity 0.5s ease;
+            /* transition: opacity 0.5s ease; */
+            color: #ffffff; /* Testo bianco */
+            font-size: 1.5rem; /* Dimensione del testo */
+            text-align: center; /* Testo centrato */
+            line-height: 1.8; /* Migliora leggibilità */
+            background: linear-gradient(135deg, #8e44ad, #2c2c54); /* Gradiente viola scuro */
+            border-radius: 10px; /* Bordo arrotondato */
+            padding: 20px; /* Spaziatura interna */
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* Ombreggiatura elegante */
+            max-width: 700px; /* Larghezza massima */
+            margin: 30px auto; /* Centro nella pagina */
         }
 
         .description {
             font-size: 24px;
-            color: #b2adad;
+            color: #ffffff;
             opacity: 1; /* Mostrata inizialmente */
         }
 
@@ -74,7 +84,7 @@
         
 footer {
     background-color: #8e44ad; /* Viola scuro */
-    padding: 50px;
+    padding: 20px;
     text-align: center;
     position: fixed;
     bottom: 0;
@@ -125,13 +135,7 @@ footer {
             margin-top: 50px;
         }
 
-        .search-bar-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px; /* Distanza tra le searchbar */
-    margin-top: 50px;
-}
+        
 
 .search-bar {
     display: flex;
@@ -192,7 +196,7 @@ footer {
         }
         #emailForm {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #8e44ad, #9b59b6);
+            /* background: linear-gradient(135deg, #8e44ad, #9b59b6); */
             padding: 50px;
             border-radius: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -228,7 +232,7 @@ footer {
         }
 
         #emailForm button {
-            background: linear-gradient(135deg, #9c18d1, #000000);
+            background: linear-gradient(135deg, #9c18d1, #866195);
             border: none;
             color: #ffffff;
             padding: 10px 20px;
@@ -239,7 +243,7 @@ footer {
         }
 
         #emailForm button:hover {
-            background: linear-gradient(135deg, #000000, #9c18d1);
+            background: linear-gradient(135deg, #866195, #9c18d1);
             transform: scale(1.05);
         }
 
@@ -261,7 +265,7 @@ footer {
 
 
     <div class="inbox" id="inbox">
-         <div class="search-bar-container">
+         <div class="">
             <form id="emailForm" method="post" action="/check_email">
                 <label for="email">Inserisci il tuo indirizzo email:</label>
                 <input type="email" id="email" name="email" required>
